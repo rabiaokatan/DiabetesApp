@@ -20,27 +20,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.white,
         drawer: SideMenu(),
         appBar: AppBar(
-            toolbarHeight: Responsive.isDesktop(context) ? 0 : 50,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            iconTheme: IconThemeData(
-                color: Responsive.isDesktop(context)
-                    ? Colors.transparent
-                    : Colors.black)),
-        body: Padding(
-          padding: EdgeInsets.only(bottom: _size.height * 0.05),
-          child: Stack(
-            children: [
-              Responsive.isDesktop(context) ? SideMenu() : Container(),
-              SingleChildScrollView(
+          toolbarHeight: Responsive.isDesktop(context) ? 0 : 56,
+          title: Text(
+            'Profilim',
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Responsive.isDesktop(context)
+              ? Colors.transparent
+              : kDoubleLightColor,
+          elevation: Responsive.isDesktop(context) ? 0 : 6,
+          iconTheme: IconThemeData(
+              color: Responsive.isDesktop(context)
+                  ? Colors.transparent
+                  : Colors.black),
+        ),
+        body: Stack(
+          children: [
+            Responsive.isDesktop(context) ? SideMenu() : Container(),
+            SingleChildScrollView(
+              //TODO
+              child: Padding(
+                padding: EdgeInsets.only(bottom: _size.height * 0.05),
                 child: Responsive(
                   mobile: ProfileScreenWidget(),
                   tablet: ProfileScreenWidget(),
                   desktop: ProfileScreenWidget(),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -73,13 +81,13 @@ class ProfileScreenWidget extends StatelessWidget {
                     (Responsive.isMobile(context)
                         ? 0.4
                         : Responsive.isTablet(context)
-                            ? 0.6
+                            ? 0.45
                             : 0.5),
                 width: _size.width *
                     (Responsive.isMobile(context)
                         ? 0.7
                         : Responsive.isTablet(context)
-                            ? 0.5
+                            ? 0.6
                             : 0.4),
                 decoration: BoxDecoration(
                   color: kDoubleLightColor,
@@ -100,15 +108,24 @@ class ProfileScreenWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      //TODO DÜZENLE
                       Row(
                         children: [
                           Text(
                             'Ad: ',
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Merriweather',
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black),
                           ),
                           Text(
                             'Deneme',
-                            style: Theme.of(context).textTheme.bodyText2,
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Merriweather',
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black),
                           ),
                         ],
                       ),

@@ -6,6 +6,7 @@ import 'package:flutter_diabetes_app/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/profile_screen.dart';
+import 'screens/recipes_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,7 +52,7 @@ class _MainPageState extends State<MainPage> {
       case SideMenuItems.profilim:
         return ProfileScreen();
       case SideMenuItems.saglikliTarifler:
-        return HomeScreen();
+        return RecipesScreen();
       case SideMenuItems.egzersizler:
         return ProfileScreen();
       case SideMenuItems.suTakibi:
