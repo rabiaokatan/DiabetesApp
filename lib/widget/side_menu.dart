@@ -3,6 +3,7 @@ import 'package:flutter_diabetes_app/models/side_menu_items.dart';
 import 'package:flutter_diabetes_app/provider/side_menu_provider.dart';
 import 'package:flutter_diabetes_app/responsive.dart';
 import 'package:flutter_diabetes_app/screens/constants.dart';
+import 'package:flutter_diabetes_app/widget/avatar.dart';
 import 'package:provider/provider.dart';
 
 class SideMenu extends StatefulWidget {
@@ -37,12 +38,12 @@ class _SideMenuState extends State<SideMenu> {
                 SizedBox(
                   height: _size.height * 0.04,
                 ),
-                CircleAvatar(
-                  radius:
-                      _size.width * (Responsive.isMobile(context) ? 0.1 : Responsive.isTablet(context) ? 0.06 : 0.04),
-                  //backgroundImage: NetworkImage(url),
-                  backgroundColor: Colors.yellow,
-                ),
+                Avatar(
+                    size: Responsive.isMobile(context)
+                        ? 0.1
+                        : Responsive.isTablet(context)
+                            ? 0.055
+                            : 0.04),
                 SizedBox(
                   height: _size.height * 0.04,
                 ),

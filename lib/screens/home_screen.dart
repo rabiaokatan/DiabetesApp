@@ -31,67 +31,82 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icon(Icons.menu),
                   )
                 : SideMenu(),
-            Responsive(
-              mobile: Container(
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      //TODO FONT FAMILY DEĞİŞTİR
-                      Text(
-                        'Hoşgeldiniz',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: kPrimaryColor, //Colors.black,
-                          fontWeight: FontWeight.w700,
-                        ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  height: _size.height * 0.1,
+                ),
+                Responsive(
+                  mobile: Container(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Haydi başlayalım!',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: kPrimaryColor, //Colors.black,
+                              fontFamily: 'Shrikhand',
+                            ),
+                          ),
+                          SizedBox(height: _size.height * 0.02),
+                          Image.asset("assets/images/bg_photo.jpg"),
+                        ],
                       ),
-                      SizedBox(height: _size.height * 0.02),
-                      Image.asset("assets/images/bg_photo.jpg"),
-                    ],
+                    ),
+                  ),
+                  tablet: Container(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Haydi başlayalım!',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: kPrimaryColor, //Colors.black,
+                              fontFamily: 'Shrikhand',
+                            ),
+                          ),
+                          SizedBox(height: _size.height * 0.02),
+                          Image.asset("assets/images/bg_photo.jpg"),
+                        ],
+                      ),
+                    ),
+                  ),
+                  desktop: Container(
+                    padding: EdgeInsets.only(left:_size.width*0.12),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Haydi başlayalım!',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: kPrimaryColor, //Colors.black,
+                              fontFamily: 'Shrikhand',
+                            ),
+                          ),
+                          SizedBox(height: _size.height * 0.02),
+                          Image.asset("assets/images/bg_photo.jpg"),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              tablet: Container(
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      //TODO FONT FAMILY DEĞİŞTİR
-                      Text(
-                        'Hoşgeldiniz',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: kPrimaryColor, //Colors.black,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      SizedBox(height: _size.height * 0.02),
-                      Image.asset("assets/images/bg_photo.jpg"),
-                    ],
-                  ),
+                Padding(
+                  padding: Responsive.isDesktop(context)?  EdgeInsets.only(bottom:10, left:_size.width*0.12) :
+                  const EdgeInsets.symmetric(vertical: 10,),
+                  child: Text('Diabetes App v.00.01',
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                          fontFamily: 'Merriweather')),
                 ),
-              ),
-              desktop: Container(
-               child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      //TODO FONT FAMILY DEĞİŞTİR
-                      Text(
-                        'Hoşgeldiniz',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: kPrimaryColor, //Colors.black,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      SizedBox(height: _size.height * 0.02),
-                      Image.asset("assets/images/bg_photo.jpg"),
-                    ],
-                  ),
-                ),
-              ),
+              ],
             ),
           ],
         ),
