@@ -96,6 +96,9 @@ class _SideMenuState extends State<SideMenu> {
 
     final color = Colors.white;
 
+    bool isMobile = Responsive.isMobile(context);
+    bool isTablet = Responsive.isTablet(context);
+
     return Material(
       color: Colors.transparent,
       child: Padding(
@@ -105,7 +108,15 @@ class _SideMenuState extends State<SideMenu> {
           selectedTileColor: kPrimaryColor.withOpacity(0.3),
           leading: Icon(iconName, color: color),
           title: Text(title,
-              style: TextStyle(fontWeight: FontWeight.w700, color: color)),
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: color,
+                fontSize: isMobile
+                    ? 15
+                    : isTablet
+                        ? 18
+                        : 20,
+              )),
           onTap: () => selectItem(context, item),
         ),
       ),

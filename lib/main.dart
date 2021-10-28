@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_diabetes_app/models/side_menu_items.dart';
 import 'package:flutter_diabetes_app/provider/side_menu_provider.dart';
+import 'package:flutter_diabetes_app/responsive.dart';
 import 'package:flutter_diabetes_app/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'screens/recipes_screen.dart';
@@ -21,8 +22,17 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           //primarySwatch: Colors.blue,
           textTheme: TextTheme(
-            bodyText1: TextStyle(fontSize: 15, fontFamily: 'Merriweather', color: Colors.black),
-            bodyText2: TextStyle(fontSize: 15, fontFamily: 'Merriweather', fontWeight: FontWeight.w600, color: Colors.black),
+            bodyText1: TextStyle(
+              fontSize:15,
+              fontFamily: 'Merriweather',
+              color: Colors.black,
+            ),
+            bodyText2: TextStyle(
+              fontSize:15,
+              fontFamily: 'Merriweather',
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
           ),
         ),
         home: MainPage(),

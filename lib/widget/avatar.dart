@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_diabetes_app/screens/constants.dart';
-
-import '../responsive.dart';
 
 class Avatar extends StatelessWidget {
   const Avatar({Key? key, required this.size}) : super(key: key);

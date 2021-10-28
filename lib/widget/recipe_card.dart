@@ -4,7 +4,9 @@ import 'package:flutter_diabetes_app/screens/constants.dart';
 import '../responsive.dart';
 
 class RecipeCard extends StatelessWidget {
-  const RecipeCard({Key? key}) : super(key: key);
+  String name;
+  String photoURL;
+ RecipeCard({Key? key, required this.name, required this.photoURL}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class RecipeCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
+          //tarif fotoğraflarının arkaplanındaki yeşil container
           Container(
             height: height *
                 (isMobile
@@ -36,7 +39,16 @@ class RecipeCard extends StatelessWidget {
                         ? 0.45
                         : 0.2),
             decoration: BoxDecoration(
-              color: kDoubleLightColor,
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  kPrimaryColor,
+                  kDoubleLightColor,
+                  Colors.yellow.shade100
+                ],
+                //colors: [kPrimaryColor ,kDoubleLightColor],
+              ),
               borderRadius: BorderRadius.circular(25),
               boxShadow: [
                 BoxShadow(
@@ -46,6 +58,7 @@ class RecipeCard extends StatelessWidget {
                 ),
               ],
             ),
+            // fotoğraf ile arkadaki yeşil container arasındaki padding:
             child: Padding(
               padding: EdgeInsets.symmetric(
                 vertical: height *
@@ -65,6 +78,8 @@ class RecipeCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  //tarif fotoğrafının bulunduğu container
+                  //telefon, tablet ya da desktopa göre boyut ayarlaması yapılır:
                   Container(
                     height: height *
                         (isMobile
@@ -81,6 +96,7 @@ class RecipeCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                     ),
+                    //tarif fotoğrafının borderRadius alması için cliprrect kullandım
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Image.asset(
@@ -91,7 +107,16 @@ class RecipeCard extends StatelessWidget {
                   ),
                   Text(
                     'Tortilla Wrap',
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: TextStyle(
+                      fontSize: isMobile
+                          ? 15
+                          : isTablet
+                              ? 18
+                              : 20,
+                      fontFamily: 'Merriweather',
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
                   ),
                 ],
               ),
