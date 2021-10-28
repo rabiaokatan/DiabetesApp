@@ -4,8 +4,6 @@ import 'package:flutter_diabetes_app/models/side_menu_items.dart';
 import 'package:flutter_diabetes_app/provider/side_menu_provider.dart';
 import 'package:flutter_diabetes_app/screens/home_screen.dart';
 import 'package:provider/provider.dart';
-
-import 'screens/profile_screen.dart';
 import 'screens/recipes_screen.dart';
 
 void main() {
@@ -49,18 +47,16 @@ class _MainPageState extends State<MainPage> {
     switch (sideMenuItem) {
       case SideMenuItems.anasayfa:
         return HomeScreen();
-      case SideMenuItems.profilim:
-        return ProfileScreen();
       case SideMenuItems.saglikliTarifler:
         return RecipesScreen();
       case SideMenuItems.egzersizler:
-        return ProfileScreen();
+        return HomeScreen();
       case SideMenuItems.suTakibi:
         return HomeScreen();
       case SideMenuItems.hastaligimHakkinda:
-        return ProfileScreen();
+        return HomeScreen();
       case SideMenuItems.ayarlar:
-        return ProfileScreen();
+        return HomeScreen();
     }
   }
 }

@@ -26,9 +26,18 @@ class _SideMenuState extends State<SideMenu> {
                   ? 0.4
                   : 0.18),
       decoration: BoxDecoration(
-        color: Responsive.isMobile(context) || Responsive.isTablet(context)
-            ? Colors.white
-            : kLightColor.withOpacity(0.2),
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [kPrimaryColor, kDoubleLightColor],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 5,
+            blurRadius: 7,
+          ),
+        ],
       ),
       child: SafeArea(
         child: ListView(
@@ -47,10 +56,6 @@ class _SideMenuState extends State<SideMenu> {
                 SizedBox(
                   height: _size.height * 0.04,
                 ),
-                sideMenuButtons(context,
-                    iconName: Icons.person,
-                    title: 'Profilim',
-                    item: SideMenuItems.profilim),
                 sideMenuButtons(context,
                     iconName: Icons.food_bank_outlined,
                     title: 'Sağlıklı Tarifler',
@@ -89,7 +94,7 @@ class _SideMenuState extends State<SideMenu> {
     final currentItem = provider.sideMenuItem;
     final isSelected = item == currentItem;
 
-    final color = Colors.black;
+    final color = Colors.white;
 
     return Material(
       color: Colors.transparent,

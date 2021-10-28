@@ -27,7 +27,7 @@ class RecipeCard extends StatelessWidget {
                 (isMobile
                     ? 0.3
                     : isTablet
-                        ? 0.45
+                        ? 0.35
                         : 0.4),
             width: width *
                 (isMobile
@@ -58,8 +58,8 @@ class RecipeCard extends StatelessWidget {
                     (isMobile
                         ? 0.04
                         : isTablet
-                            ? 0.02
-                            : 0.01),
+                            ? 0.03
+                            : 0.015),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,13 +70,13 @@ class RecipeCard extends StatelessWidget {
                         (isMobile
                             ? 0.2
                             : isTablet
-                                ? 0.35
+                                ? 0.25
                                 : 0.3),
                     width: width *
                         (isMobile
                             ? 0.5
                             : isTablet
-                                ? 0.38
+                                ? 0.6
                                 : 0.6),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),

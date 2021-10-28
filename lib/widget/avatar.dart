@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_diabetes_app/screens/constants.dart';
 
 import '../responsive.dart';
 
@@ -9,10 +10,23 @@ class Avatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
-    return CircleAvatar(
-      radius: _size.width * size,
-      //backgroundImage: NetworkImage(url),
-      backgroundColor: Colors.yellow,
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: _size.width * size,
+          //backgroundImage: NetworkImage(url),
+          backgroundColor: Colors.yellow[100],
+        ),
+        SizedBox(height: _size.height * 0.02),
+        Text(
+          'Diabetes App',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Merriweather',
+            fontSize: 15,
+          ),
+        ),
+      ],
     );
   }
 }
