@@ -100,13 +100,13 @@ class RecipeCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Image.asset(
-                        'assets/images/tortilla-wrap.jpg',
+                        photoURL,
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
                   Text(
-                    'Tortilla Wrap',
+                    name,
                     style: TextStyle(
                       fontSize: isMobile
                           ? 15
