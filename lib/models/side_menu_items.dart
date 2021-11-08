@@ -1,7 +1,7 @@
 enum SideMenuItems{
   anasayfa,
   saglikliTarifler,
-  egzersizler,
+  besinDegerleri,
   suTakibi,
   hastaligimHakkinda,
   ayarlar

@@ -4,6 +4,7 @@ import 'package:flutter_diabetes_app/models/side_menu_items.dart';
 import 'package:flutter_diabetes_app/provider/side_menu_provider.dart';
 import 'package:flutter_diabetes_app/responsive.dart';
 import 'package:flutter_diabetes_app/screens/home_screen.dart';
+import 'package:flutter_diabetes_app/screens/nutritional_values_screen.dart';
 import 'package:provider/provider.dart';
 import 'screens/recipes_screen.dart';
 
@@ -59,8 +60,8 @@ class _MainPageState extends State<MainPage> {
         return HomeScreen();
       case SideMenuItems.saglikliTarifler:
         return RecipesScreen();
-      case SideMenuItems.egzersizler:
-        return HomeScreen();
+      case SideMenuItems.besinDegerleri:
+        return NutritionalValuesScreen();
       case SideMenuItems.suTakibi:
         return HomeScreen();
       case SideMenuItems.hastaligimHakkinda:

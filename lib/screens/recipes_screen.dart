@@ -27,25 +27,25 @@ class _RecipesScreenState extends State<RecipesScreen> {
         backgroundColor: Colors.white,
         drawer: SideMenu(),
         appBar: AppBar(
-          toolbarHeight: Responsive.isDesktop(context) ? 0 : 56,
+          toolbarHeight: isDesktop ? 0 : 56,
           title: Text(
             'Sağlıklı Tarifler',
             style: TextStyle(color: Colors.black, fontSize: isTablet ? 24 : 20 ),
           ),
-          backgroundColor: Responsive.isDesktop(context)
+          backgroundColor: isDesktop
               ? Colors.transparent
               : kDoubleLightColor,
-          elevation: Responsive.isDesktop(context) ? 0 : 6,
+          elevation: isDesktop ? 0 : 6,
           iconTheme: IconThemeData(
-              color: Responsive.isDesktop(context)
+              color: isDesktop
                   ? Colors.transparent
                   : Colors.black),
         ),
         body: Stack(
           children: [
-            Responsive.isDesktop(context) ? SideMenu() : Container(),
+            isDesktop ? SideMenu() : Container(),
             RawScrollbar(
-              thumbColor: Responsive.isMobile(context)
+              thumbColor: isMobile
                   ? kDoubleLightColor
                   : Colors.transparent,
               radius: Radius.circular(20),
