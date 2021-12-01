@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_diabetes_app/screens/constants.dart';
+import 'package:flutter_diabetes_app/widget/shimmer_widget.dart';
 
 import '../responsive.dart';
 
 class RecipeCard extends StatelessWidget {
+  bool isLoading;
   String name;
   String photoURL;
- RecipeCard({Key? key, required this.name, required this.photoURL}) : super(key: key);
+  RecipeCard({
+    Key? key,
+    required this.isLoading,
+    required this.name,
+    required this.photoURL,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -97,16 +104,25 @@ class RecipeCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     //tarif fotoğrafının borderRadius alması için cliprrect kullandım
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        photoURL,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    child: isLoading
+                        ? ShimmerWidget.circular(
+                            width: width,
+                            height: height,
+                            shapeBorder: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          )
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.network(
+                              photoURL,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                   ),
                   Text(
                     name,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: isMobile
                           ? 15
@@ -122,37 +138,37 @@ class RecipeCard extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            right: !isTablet ? 12 : 20,
-            bottom: !isTablet ? 40 : 70,
-            child: Container(
-              height: isMobile
-                  ? height * 0.06
-                  : isTablet
-                      ? height * 0.045
-                      : height * 0.07,
-              width: isMobile
-                  ? width * 0.12
-                  : isTablet
-                      ? width * 0.055
-                      : width * 0.035,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child: Text(
-                '20 \n kcal',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: kSecondaryColor,
-                  fontFamily: 'Merriweather',
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   right: !isTablet ? 12 : 20,
+          //   bottom: !isTablet ? 40 : 70,
+          //   child: Container(
+          //     height: isMobile
+          //         ? height * 0.06
+          //         : isTablet
+          //             ? height * 0.045
+          //             : height * 0.07,
+          //     width: isMobile
+          //         ? width * 0.12
+          //         : isTablet
+          //             ? width * 0.055
+          //             : width * 0.035,
+          //     alignment: Alignment.center,
+          //     decoration: BoxDecoration(
+          //       color: kPrimaryColor,
+          //       borderRadius: BorderRadius.circular(50),
+          //     ),
+          //     child: Text(
+          //       '20 \n kcal',
+          //       textAlign: TextAlign.center,
+          //       style: TextStyle(
+          //         color: kSecondaryColor,
+          //         fontFamily: 'Merriweather',
+          //         fontSize: 15,
+          //         fontWeight: FontWeight.w700,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
