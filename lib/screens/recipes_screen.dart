@@ -1,6 +1,8 @@
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_diabetes_app/models/recipes.dart';
 import 'package:flutter_diabetes_app/screens/constants.dart';
+import 'package:flutter_diabetes_app/widget/back_recipe_card.dart';
 import 'package:flutter_diabetes_app/widget/recipe_card.dart';
 import 'package:flutter_diabetes_app/widget/shimmer_widget.dart';
 import 'package:flutter_diabetes_app/widget/side_menu.dart';
@@ -90,12 +92,16 @@ class _RecipesScreenState extends State<RecipesScreen> {
                             : 0.1,
                   ),
                   itemBuilder: (context, index) {
-                    return Center(
-                        child: RecipeCard(
-                      isLoading: isLoading,
-                      name: recipes[index].name,
-                      photoURL: recipes[index].image,
-                    ));
+                    return FlipCard(
+                        front: Center(
+                            child: RecipeCard(
+                          isLoading: isLoading,
+                          name: recipes[index].name,
+                          photoURL: recipes[index].image,
+                        )),
+                        back: BackRecipeCard(
+                          kcal: recipes[index].kcal!,
+                        ));
                   },
                   itemCount: totalRecipeNumber,
                 ),
