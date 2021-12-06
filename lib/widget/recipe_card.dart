@@ -138,37 +138,6 @@ class RecipeCard extends StatelessWidget {
               ),
             ),
           ),
-          // Positioned(
-          //   right: !isTablet ? 12 : 20,
-          //   bottom: !isTablet ? 40 : 70,
-          //   child: Container(
-          //     height: isMobile
-          //         ? height * 0.06
-          //         : isTablet
-          //             ? height * 0.045
-          //             : height * 0.07,
-          //     width: isMobile
-          //         ? width * 0.12
-          //         : isTablet
-          //             ? width * 0.055
-          //             : width * 0.035,
-          //     alignment: Alignment.center,
-          //     decoration: BoxDecoration(
-          //       color: kPrimaryColor,
-          //       borderRadius: BorderRadius.circular(50),
-          //     ),
-          //     child: Text(
-          //       '20 \n kcal',
-          //       textAlign: TextAlign.center,
-          //       style: TextStyle(
-          //         color: kSecondaryColor,
-          //         fontFamily: 'Merriweather',
-          //         fontSize: 15,
-          //         fontWeight: FontWeight.w700,
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
