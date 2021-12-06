@@ -132,6 +132,7 @@ class RecipeCard extends StatelessWidget {
                       fontFamily: 'Merriweather',
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
