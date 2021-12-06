@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
           //primarySwatch: Colors.blue,
           textTheme: TextTheme(
             bodyText1: TextStyle(
-              fontSize:15,
+              fontSize: 15,
               fontFamily: 'Merriweather',
               color: Colors.black,
             ),
             bodyText2: TextStyle(
-              fontSize:15,
+              fontSize: 15,
               fontFamily: 'Merriweather',
               fontWeight: FontWeight.w600,
               color: Colors.black,
@@ -71,3 +71,4 @@ class _MainPageState extends State<MainPage> {
     }
   }
 }
+//deneme
