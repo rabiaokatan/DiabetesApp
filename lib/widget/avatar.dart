@@ -11,8 +11,8 @@ class Avatar extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: _size.width * size,
-          //backgroundImage: NetworkImage(url),
-          backgroundColor: Colors.yellow[100],
+          backgroundImage: AssetImage('assets/images/bg_photo.jpg'),
+         // backgroundColor: Colors.yellow[100],
         ),
         SizedBox(height: _size.height * 0.02),
         Text(
