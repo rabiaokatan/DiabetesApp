@@ -100,6 +100,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                           photoURL: recipes[index].image,
                         )),
                         back: BackRecipeCard(
+                          key: Key((index).toString()),
                           kcal: recipes[index].kcal!,
                         ));
                   },
