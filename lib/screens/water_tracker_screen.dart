@@ -170,12 +170,15 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
               new CircularPercentIndicator(
                 radius: 200.0,
                 lineWidth: 20.0,
-                percent: glassCounter / totalGlass,
+                percent: glassCounter == 0 ? 0 : glassCounter / totalGlass,
                 animation: true,
                 animationDuration: 1000,
                 center: glassCounter == 0
                     ? Text('%0')
-                    : Text("%${(100 * glassCounter / totalGlass).toStringAsFixed(2)}"),
+                    : (100 * glassCounter / totalGlass)== 100
+                        ? Text('%100')
+                        : Text(
+                            "%${(100 * glassCounter / totalGlass).toStringAsFixed(2)}"),
                 backgroundColor: kDoubleLightColor,
                 progressColor: kLightColor,
                 circularStrokeCap: CircularStrokeCap.round,

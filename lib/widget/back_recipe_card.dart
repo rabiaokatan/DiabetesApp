@@ -51,7 +51,15 @@ class BackRecipeCard extends StatelessWidget {
             ],
           ),
           child: Center(
-            child: Text('$kcal kcal'),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('$kcal kcal'),
+                SizedBox(height:_size.height*0.02),
+                TextButton(onPressed: (){}, child: Text('Tarifi Görüntüle', style: TextStyle(color: kPrimaryColor, fontSize: 18),)),
+              ],
+            ),
           )),
     );
   }
