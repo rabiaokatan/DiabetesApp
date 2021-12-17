@@ -18,6 +18,8 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
   double personWeight = 0.0;
   double _dailyWater = 0.0;
   String water = '';
+  int totalGlass = 0;
+  int glassCounter = 0;
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -43,6 +45,8 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
           _dailyWater = personWeight * 0.03;
           water = _dailyWater
               .toStringAsFixed(2); //virgülden sonra iki basamak gösterir
+
+          totalGlass = ((_dailyWater * 1000) / 200).round();
         });
       }
     }
@@ -111,14 +115,7 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
                   Padding(
                     padding: EdgeInsets.only(left: _size.width * 0.03),
                     child: GestureDetector(
-                      onTap:
-                          //_textController.text.isEmpty
-                          //     ?
-                          //      () {
-                          //         if (!_formKey.currentState!.validate()) return;
-                          //       }
-                          //:
-                          _dailyWaterCalculation,
+                      onTap: _dailyWaterCalculation,
                       child: Container(
                         padding: EdgeInsets.symmetric(
                             vertical: _size.height * 0.022,
@@ -129,12 +126,15 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
                               spreadRadius: 3,
-                              blurRadius:7,
+                              blurRadius: 7,
                             ),
                           ],
                           color: kLightColor,
                         ),
-                        child: Text('Hesapla', style: TextStyle(color: Colors.white),),
+                        child: Text(
+                          'Hesapla',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -153,14 +153,29 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
                         ),
                 ],
               ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Kaç bardak:'),
+                  _dailyWater == 0.0
+                      ? Text('')
+                      : Text(
+                          ' $totalGlass bardak (200ml\'lik)',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                ],
+              ),
               SizedBox(height: _size.height * 0.05),
               new CircularPercentIndicator(
                 radius: 200.0,
                 lineWidth: 20.0,
-                percent: 0.3,
+                percent: glassCounter / totalGlass,
                 animation: true,
                 animationDuration: 1000,
-                center: new Text("100%"),
+                center: glassCounter == 0
+                    ? Text('%0')
+                    : Text("%${(100 * glassCounter / totalGlass).toStringAsFixed(2)}"),
                 backgroundColor: kDoubleLightColor,
                 progressColor: kLightColor,
                 circularStrokeCap: CircularStrokeCap.round,
@@ -176,8 +191,19 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
           height: _size.height * 0.1,
           child: FloatingActionButton(
             backgroundColor: kLightColor,
-            child: Icon(Icons.free_breakfast_outlined),
-            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.free_breakfast_outlined),
+                Icon(Icons.add),
+              ],
+            ),
+            onPressed: () {
+              setState(() {
+                glassCounter++;
+                if (glassCounter == totalGlass) print('tebrikler');
+              });
+            },
           ),
         ),
       ),
