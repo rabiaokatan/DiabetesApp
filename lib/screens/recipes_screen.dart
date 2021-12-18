@@ -101,7 +101,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                         )),
                         back: BackRecipeCard(
                           key: Key((index).toString()),
-                          kcal: recipes[index].kcal!,
+                          kcal: recipes[index].kcal,
                         ));
                   },
                   itemCount: totalRecipeNumber,

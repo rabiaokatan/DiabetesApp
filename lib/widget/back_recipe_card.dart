@@ -14,7 +14,7 @@ class BackRecipeCard extends StatelessWidget {
     bool isTablet = Responsive.isTablet(context);
     final double height = _size.height;
     final double width = _size.width;
-    
+
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: height *
@@ -86,11 +86,57 @@ class BackRecipeCard extends StatelessWidget {
                 topRight: Radius.circular(20),
               ),
             ),
-            child: Container(
-             // height: 50,
-              child: Center(child: Text(recipes[index].name)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+              child: Column(
+                children: [
+                  Text(
+                    '${recipes[index].name} Tarifi İçin Malzemeler',
+                    style: TextStyle(fontSize: 18,),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(left:10),
+                    child: Container(
+                      height: 100,
+                      child: ListView.builder(
+                          itemCount: recipes[index].ingredients.length,
+                          itemBuilder: (BuildContext context, i) {
+                            return Text(
+                              '• ${recipes[index].ingredients[i]}',
+                              overflow: TextOverflow.fade,
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                            );
+                          }),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    '${recipes[index].name} Nasıl Yapılır?',
+                    style: TextStyle(fontSize: 18,),
+                    textAlign: TextAlign.center,
+                  ),
+                   Padding(
+                    padding: const EdgeInsets.only(left:10),
+                    child: Container(
+                      height: 180,
+                      child: ListView.builder(
+                          itemCount: recipes[index].recipe.length,
+                          itemBuilder: (BuildContext context, i) {
+                            return Text(
+                              '• ${recipes[index].recipe[i]}',
+                              overflow: TextOverflow.fade,
+                              style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),
+                            );
+                          }),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         });
   }
 }
+//child: Text(recipes[index].name)
