@@ -75,66 +75,85 @@ class BackRecipeCard extends StatelessWidget {
     final index = int.parse(x.replaceAll(RegExp('[^0-9]'), ''));
 
     showModalBottomSheet(
+        isScrollControlled: true,
         backgroundColor: Colors.transparent,
         context: context,
         builder: (context) {
-          return Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+          return Wrap(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  child: Column(
+                    children: [
+                      Text(
+                        '${recipes[index].name} Tarifi İçin Malzemeler',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Wrap(
+                          children:[ ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: recipes[index].ingredients.length,
+                              itemBuilder: (BuildContext context, i) {
+                                return Text(
+                                  '• ${recipes[index].ingredients[i]}',
+                                  overflow: TextOverflow.fade,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
+                                );
+                              }),],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        '${recipes[index].name} Nasıl Yapılır?',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                       SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Wrap(
+                          children: [
+                            ListView.builder(
+                                //physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: recipes[index].recipe.length,
+                                itemBuilder: (BuildContext context, i) {
+                                  return Text(
+                                    '• ${recipes[index].recipe[i]}',
+                                    overflow: TextOverflow.fade,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500),
+                                  );
+                                }),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-              child: Column(
-                children: [
-                  Text(
-                    '${recipes[index].name} Tarifi İçin Malzemeler',
-                    style: TextStyle(fontSize: 18,),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(left:10),
-                    child: Container(
-                      height: 100,
-                      child: ListView.builder(
-                          itemCount: recipes[index].ingredients.length,
-                          itemBuilder: (BuildContext context, i) {
-                            return Text(
-                              '• ${recipes[index].ingredients[i]}',
-                              overflow: TextOverflow.fade,
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                            );
-                          }),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    '${recipes[index].name} Nasıl Yapılır?',
-                    style: TextStyle(fontSize: 18,),
-                    textAlign: TextAlign.center,
-                  ),
-                   Padding(
-                    padding: const EdgeInsets.only(left:10),
-                    child: Container(
-                      height: 180,
-                      child: ListView.builder(
-                          itemCount: recipes[index].recipe.length,
-                          itemBuilder: (BuildContext context, i) {
-                            return Text(
-                              '• ${recipes[index].recipe[i]}',
-                              overflow: TextOverflow.fade,
-                              style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),
-                            );
-                          }),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            ],
           );
         });
   }
