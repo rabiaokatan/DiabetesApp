@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_diabetes_app/models/side_menu_items.dart';
 import 'package:flutter_diabetes_app/provider/side_menu_provider.dart';
+import 'package:flutter_diabetes_app/screens/about_diabetes_screen.dart';
 import 'package:flutter_diabetes_app/screens/home_screen.dart';
 import 'package:flutter_diabetes_app/screens/nutritional_values_screen.dart';
 import 'package:flutter_diabetes_app/screens/water_tracker_screen.dart';
@@ -65,9 +66,7 @@ class _MainPageState extends State<MainPage> {
       case SideMenuItems.suTakibi:
         return WaterTrackerScreen();
       case SideMenuItems.hastaligimHakkinda:
-        return HomeScreen();
-      case SideMenuItems.ayarlar:
-        return HomeScreen();
+        return AboutDiabetes();
     }
   }
 }

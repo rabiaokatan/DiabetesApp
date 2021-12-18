@@ -62,7 +62,7 @@ class BackRecipeCard extends StatelessWidget {
                     onPressed: () => _onPressed(context),
                     child: Text(
                       'Tarifi Görüntüle',
-                      style: TextStyle(color: kPrimaryColor, fontSize: 18),
+                      style: TextStyle(color: kPrimaryColor, fontSize: 19, fontWeight:FontWeight.w700, fontFamily: 'Merriweather'),
                     )),
               ],
             ),
@@ -109,7 +109,7 @@ class BackRecipeCard extends StatelessWidget {
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: recipes[index].ingredients.length,
-                              itemBuilder: (BuildContext context, i) {
+                              itemBuilder: (context, i) {
                                 return Text(
                                   '• ${recipes[index].ingredients[i]}',
                                   overflow: TextOverflow.fade,
@@ -137,7 +137,7 @@ class BackRecipeCard extends StatelessWidget {
                                 //physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: recipes[index].recipe.length,
-                                itemBuilder: (BuildContext context, i) {
+                                itemBuilder: (context, i) {
                                   return Text(
                                     '• ${recipes[index].recipe[i]}',
                                     overflow: TextOverflow.fade,
@@ -158,4 +158,3 @@ class BackRecipeCard extends StatelessWidget {
         });
   }
 }
-//child: Text(recipes[index].name)

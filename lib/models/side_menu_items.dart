@@ -4,5 +4,4 @@ enum SideMenuItems{
   besinDegerleri,
   suTakibi,
   hastaligimHakkinda,
-  ayarlar
 } 

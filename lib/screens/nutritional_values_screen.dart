@@ -161,7 +161,8 @@ class _NutritionalValuesScreenState extends State<NutritionalValuesScreen> {
                                     color: MaterialStateProperty.resolveWith<Color>(
                                         (Set<MaterialState> states) {
                                       if (item.id % 2 == 0)
-                                        return Colors.grey.shade300;
+                                       return kDoubleLightColor.withOpacity(0.5);
+                                        //return Colors.grey.shade300;
                                       return Colors
                                           .transparent; // Use the default value.
                                     }),
