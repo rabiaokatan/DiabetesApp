@@ -62,131 +62,150 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
           ),
           backgroundColor: isDesktop ? Colors.transparent : kDoubleLightColor,
           elevation: isDesktop ? 0 : 6,
-          iconTheme:
-              IconThemeData(color: isDesktop ? Colors.transparent : Colors.black),
+          iconTheme: IconThemeData(
+              color: isDesktop ? Colors.transparent : Colors.black),
         ),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              /*horizontal: _size.width*0.05,*/
-              vertical: _size.height * 0.05,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Kilonuz:'),
-                    Padding(
-                      padding: EdgeInsets.only(left: _size.width * 0.02),
-                      child: Container(
-                        width: _size.width * 0.45,
-                        height: _size.height * 0.07,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(color: kLightColor.withOpacity(0.3)),
-                        ),
-                        alignment: Alignment.center,
-                        child: Form(
-                          key: _formKey,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: _size.width * 0.06,
-                                bottom: _size.height * 0.005),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value!.isEmpty)
-                                  return 'Lütfen kilonuzu giriniz.';
-                                else
-                                  return null;
-                              },
-                              controller: _textController,
-                              keyboardType: TextInputType.number,
-                              cursorColor: kPrimaryColor,
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
+        body: Stack(
+          children: [
+            isDesktop ? SideMenu() : Container(),
+            Padding(
+              padding: isDesktop
+                  ? EdgeInsets.only(
+                      left: _size.width * 0.20,
+                      right: _size.width * 0.02,
+                      top: _size.height * 0.05)
+                  : EdgeInsets.only(
+                      left: _size.width * 0.03,
+                      right: _size.width * 0.03,
+                      top: isTablet ? _size.height * 0.01 : _size.height * 0.01,
+                      bottom: _size.height * 0.02),
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    /*horizontal: _size.width*0.05,*/
+                    vertical: _size.height * 0.05,
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Kilonuz:'),
+                          Padding(
+                            padding: EdgeInsets.only(left: _size.width * 0.02),
+                            child: Container(
+                              width: _size.width * 0.45,
+                              height: _size.height * 0.07,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(30),
+                                border: Border.all(
+                                    color: kLightColor.withOpacity(0.3)),
+                              ),
+                              alignment: Alignment.center,
+                              child: Form(
+                                key: _formKey,
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      left: _size.width * 0.06,
+                                      bottom: _size.height * 0.005),
+                                  child: TextFormField(
+                                    validator: (value) {
+                                      if (value!.isEmpty)
+                                        return 'Lütfen kilonuzu giriniz.';
+                                      else
+                                        return null;
+                                    },
+                                    controller: _textController,
+                                    keyboardType: TextInputType.number,
+                                    cursorColor: kPrimaryColor,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: _size.width * 0.03),
-                      child: GestureDetector(
-                        onTap: _dailyWaterCalculation,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: _size.height * 0.022,
-                              horizontal: _size.width * 0.03),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                spreadRadius: 3,
-                                blurRadius: 7,
+                          Padding(
+                            padding: EdgeInsets.only(left: _size.width * 0.03),
+                            child: GestureDetector(
+                              onTap: _dailyWaterCalculation,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: _size.height * 0.022,
+                                    horizontal: _size.width * 0.03),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      spreadRadius: 3,
+                                      blurRadius: 7,
+                                    ),
+                                  ],
+                                  color: kLightColor,
+                                ),
+                                child: Text(
+                                  'Hesapla',
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
-                            ],
-                            color: kLightColor,
+                            ),
                           ),
-                          child: Text(
-                            'Hesapla',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
+                        ],
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Günlük su ihtiyacınız:'),
+                          _dailyWater == 0.0
+                              ? Text('')
+                              : Text(
+                                  ' $water litre',
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Kaç bardak:'),
+                          _dailyWater == 0.0
+                              ? Text('')
+                              : Text(
+                                  ' $totalGlass bardak (200ml\'lik)',
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                        ],
+                      ),
+                      SizedBox(height: _size.height * 0.05),
+                      new CircularPercentIndicator(
+                        radius: 200.0,
+                        lineWidth: 20.0,
+                        percent:
+                            glassCounter == 0 ? 0 : glassCounter / totalGlass,
+                        animation: true,
+                        animationDuration: 1000,
+                        center: glassCounter == 0
+                            ? Text('%0')
+                            : (100 * glassCounter / totalGlass) == 100
+                                ? Text('%100')
+                                : Text(
+                                    "%${(100 * glassCounter / totalGlass).toStringAsFixed(2)}"),
+                        backgroundColor: kDoubleLightColor,
+                        progressColor: kLightColor,
+                        circularStrokeCap: CircularStrokeCap.round,
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Günlük su ihtiyacınız:'),
-                    _dailyWater == 0.0
-                        ? Text('')
-                        : Text(
-                            ' $water litre',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Kaç bardak:'),
-                    _dailyWater == 0.0
-                        ? Text('')
-                        : Text(
-                            ' $totalGlass bardak (200ml\'lik)',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                  ],
-                ),
-                SizedBox(height: _size.height * 0.05),
-                new CircularPercentIndicator(
-                  radius: 200.0,
-                  lineWidth: 20.0,
-                  percent: glassCounter == 0 ? 0 : glassCounter / totalGlass,
-                  animation: true,
-                  animationDuration: 1000,
-                  center: glassCounter == 0
-                      ? Text('%0')
-                      : (100 * glassCounter / totalGlass)== 100
-                          ? Text('%100')
-                          : Text(
-                              "%${(100 * glassCounter / totalGlass).toStringAsFixed(2)}"),
-                  backgroundColor: kDoubleLightColor,
-                  progressColor: kLightColor,
-                  circularStrokeCap: CircularStrokeCap.round,
-                ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
         floatingActionButton: Padding(
           padding: EdgeInsets.only(bottom: _size.height * 0.03),

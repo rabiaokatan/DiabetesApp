@@ -28,58 +28,85 @@ class AboutDiabetes extends StatelessWidget {
           iconTheme: IconThemeData(
               color: isDesktop ? Colors.transparent : Colors.black),
         ),
-        body: ListView.builder(
-            itemCount: aboutDiabetesTextsList.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: _size.height * 0.015,
-                    horizontal: _size.width * 0.05),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        kLightColor.withOpacity(0.5),
-                        kDoubleLightColor.withOpacity(0.5),
-                        Colors.yellow.shade100
-                      ],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 5,
-                        blurRadius: 7,
+        body: Stack(
+          children: [
+            isDesktop ? SideMenu() : Container(),
+            Padding(
+              padding: isDesktop
+                  ? EdgeInsets.only(
+                      left: _size.width * 0.20,
+                      right: _size.width * 0.02,
+                      top: _size.height * 0.05)
+                  : EdgeInsets.only(
+                      left: _size.width * 0.03,
+                      right: _size.width * 0.03,
+                      top: isTablet ? _size.height * 0.01 : _size.height * 0.01,
+                      bottom: _size.height * 0.02),
+              child: ListView.builder(
+                  itemCount: aboutDiabetesTextsList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: _size.height * 0.015,
+                          horizontal: _size.width * 0.05),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              kLightColor.withOpacity(0.5),
+                              kDoubleLightColor.withOpacity(0.5),
+                              Colors.yellow.shade100
+                            ],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: _size.height * 0.025,
+                              horizontal: _size.width * 0.06),
+                          child: Column(
+                            children: [
+                              aboutDiabetesTextsList[index].title != null
+                                  ? Padding(
+                                      padding: EdgeInsets.only(
+                                          bottom: _size.height * 0.01),
+                                      child: Text(
+                                        aboutDiabetesTextsList[index].title!,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 15,
+                                            height: 1.5),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    )
+                                  : SizedBox(
+                                      height: 0,
+                                    ),
+                              Text(
+                                aboutDiabetesTextsList[index].text,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 15,
+                                    height: 1.5),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: _size.height * 0.025,
-                        horizontal: _size.width * 0.06),
-                    child: Column(
-                      children: [
-                        aboutDiabetesTextsList[index].title!=null ?
-                          Padding(
-                            padding: EdgeInsets.only(bottom:_size.height*0.01),
-                            child: Text(
-                            aboutDiabetesTextsList[index].title!,
-                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15,height: 1.5),
-                            textAlign: TextAlign.center,
-                        ),
-                          ): SizedBox(height: 0,),
-                        Text(
-                          aboutDiabetesTextsList[index].text,
-                          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15,height: 1.5),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            }),
+                    );
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }
