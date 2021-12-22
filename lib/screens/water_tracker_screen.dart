@@ -221,7 +221,7 @@ class _WaterTrackerScreenState extends State<WaterTrackerScreen> {
                   Icon(Icons.add),
                 ],
               ),
-              onPressed: () {
+              onPressed:glassCounter == totalGlass ? null : () {
                 setState(() {
                   glassCounter++;
                   if (glassCounter == totalGlass) print('tebrikler');

@@ -57,10 +57,10 @@ class _NutritionalValuesScreenState extends State<NutritionalValuesScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       /*isMobile || isTablet ? */Padding(
+                       Padding(
                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
                          child: Text('Tablodaki diğer değerleri görmek için sola doğru kaydırın...', style: TextStyle(fontWeight: FontWeight.w300),),
-                       )/* : Text(''),*/,
+                       ),
                       Container(
                         padding: EdgeInsets.only(bottom: _size.height * 0.02),
                         decoration: BoxDecoration(
