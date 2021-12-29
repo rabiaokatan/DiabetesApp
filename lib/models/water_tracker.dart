@@ -1,12 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-final string 
-class WaterFields {
-  static final String id = '_id';
-  static final int totalGlass = 'totalGlass';
-  static final int glassCounter = 'glassCounter';
-}
-
 class Water {
   final int? id;
   final int totalGlass;

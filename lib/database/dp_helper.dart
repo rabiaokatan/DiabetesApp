@@ -1,3 +1,7 @@
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite/sqlite_api.dart';
+
+
 class DBHelper {
     static final DBHelper instance = DBHelper._init();
 
@@ -13,8 +17,8 @@ class DBHelper {
     }
     Future<Database> _initDB(String filePath) async {
         final dbPath = await getDatabasesPath();
-        final path = join(dbPath, filePath);
-        return await openDatabase(path, version: 1; onCreate: _createDB);
+        //final path = join(dbPath, filePath);
+        return await openDatabase(dbPath, version: 1, onCreate: _createDB);
     }
 
     Future _createDB(Database db, int version) async{
