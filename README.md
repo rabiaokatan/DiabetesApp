@@ -1,16 +1,34 @@
-# flutter_diabetes_app
+# Flutter News App
 
-A new Flutter project.
+This is a Flutter project.<br>
 
-## Getting Started
+Installation:
 
-This project is a starting point for a Flutter application.
+`flutter pub get`
 
-A few resources to get you started if this is your first Flutter project:
+Usage:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+`flutter run`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Images from project (Mobile):
+
+<table>
+  <tr>
+    <td>Mobile App:</td>
+     <td></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/rabiaokatan/DiabetesApp/blob/main/images/uyg1.gif" width="300"></td>
+    <td><img src="https://github.com/rabiaokatan/DiabetesApp/blob/main/images/uyg2.gif" width="300"></td>
+  </tr>
+ </table>
+ 
+ ## Images from project (Web):
+ 
+<img src="https://github.com/rabiaokatan/DiabetesApp/blob/main/images/desktop1.png">
+<img src="https://github.com/rabiaokatan/DiabetesApp/blob/main/images/desktop2.png">
+<img src="https://github.com/rabiaokatan/DiabetesApp/blob/main/images/desktop3.png">
+<img src="https://github.com/rabiaokatan/DiabetesApp/blob/main/images/desktop4.png">
+<img src="https://github.com/rabiaokatan/DiabetesApp/blob/main/images/desktop5.png">
+<img src="https://github.com/rabiaokatan/DiabetesApp/blob/main/images/desktop6.png">
+ 
