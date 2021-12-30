@@ -1,4 +1,4 @@
-# Flutter News App
+# Flutter Diabetes App
 
 This is a Flutter project.<br>
 
